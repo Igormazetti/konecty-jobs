@@ -2,6 +2,7 @@
 import { Product } from "app/types";
 import React, { useState } from "react";
 import { MagnifyingGlass } from "@phosphor-icons/react";
+import CategoryMenu from "./CategoryMenu";
 
 interface ProductsListProps {
   products: Product[];
@@ -10,6 +11,12 @@ interface ProductsListProps {
 export default function ProductsList({ products }: ProductsListProps) {
   const [productsList, setProductsList] = useState<Product[]>(products);
   const [search, setSearch] = useState("");
+
+  const handleFilter = async (category: string) => {
+    const res = await fetch(`/api/products?category=${category}`);
+    const result = await res.json();
+    setProductsList(result);
+  };
 
   console.log(productsList);
   return (
@@ -29,6 +36,8 @@ export default function ProductsList({ products }: ProductsListProps) {
         <h1 className="font-bold text-[30px]">Tênis</h1>
         <p>{productsList.length} produtos encontrados</p>
       </div>
+
+      <CategoryMenu handleFilter={handleFilter} />
     </div>
   );
 }

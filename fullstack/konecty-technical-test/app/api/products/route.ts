@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
 
   let result = products;
 
-  if (category) {
+  if (category && category !== "Todos") {
     result = result.filter((item) => item.category === category);
   }
 
