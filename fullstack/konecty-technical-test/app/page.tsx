@@ -1,7 +1,12 @@
-export const metadata = {
-  title: "App Router",
-};
+import ProductsList from "./components/ProductsList";
 
-export default function Page() {
-  return <h1 className="bg-red-300">App Router</h1>;
+async function getProducts() {
+  const res = await fetch("http://localhost:3000/api/products");
+  return await res.json();
+}
+
+export default async function Page() {
+  const products = await getProducts();
+
+  return <ProductsList products={products || []} />;
 }

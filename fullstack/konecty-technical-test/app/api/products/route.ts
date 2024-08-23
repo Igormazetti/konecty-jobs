@@ -1,4 +1,4 @@
-import { products } from "../database/products";
+import { products } from "../../database/products";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
