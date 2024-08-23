@@ -8,5 +8,9 @@ async function getProducts() {
 export default async function Page() {
   const products = await getProducts();
 
-  return <ProductsList products={products || []} />;
+  return (
+    <div className="bg-[#F4F4F4] h-screen p-6 md:px-[150px] md:pt-10">
+      <ProductsList products={products || []} />
+    </div>
+  );
 }

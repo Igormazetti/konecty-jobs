@@ -1,6 +1,7 @@
 "use client";
 import { Product } from "app/types";
 import React, { useState } from "react";
+import { MagnifyingGlass } from "@phosphor-icons/react";
 
 interface ProductsListProps {
   products: Product[];
@@ -8,7 +9,26 @@ interface ProductsListProps {
 
 export default function ProductsList({ products }: ProductsListProps) {
   const [productsList, setProductsList] = useState<Product[]>(products);
+  const [search, setSearch] = useState("");
 
   console.log(productsList);
-  return <div>ProductsList</div>;
+  return (
+    <div className="flex flex-col gap-8">
+      <div className="relative flex items-center">
+        <MagnifyingGlass size={24} color="#8B8B8B" className=" absolute left-2" />
+        <input
+          className="bg-white text-[#8B8B8B] w-[229px] p-2 pl-10 rounded-md"
+          type="text"
+          placeholder="Buscar produto"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <h1 className="font-bold text-[30px]">Tênis</h1>
+        <p>{productsList.length} produtos encontrados</p>
+      </div>
+    </div>
+  );
 }
