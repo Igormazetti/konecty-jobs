@@ -39,7 +39,6 @@ export default function ProductsList({ products }: ProductsListProps) {
     } else {
       setProductsList(products);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedPayload]);
 
   return (
