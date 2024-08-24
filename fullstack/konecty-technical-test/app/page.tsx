@@ -9,7 +9,7 @@ export default async function Page() {
   const products = await getProducts();
 
   return (
-    <div className="bg-[#F4F4F4] min-h-[100vh] pl-4 pr-1 md:flex md:justify-center pt-10 pb-4">
+    <div className="bg-[#F4F4F4] min-h-[100vh] pl-6 pr-1 md:flex md:justify-center pt-10 pb-4">
       <ProductsList products={products || []} />
     </div>
   );
